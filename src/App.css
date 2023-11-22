@@ -1,37 +1,219 @@
-.App {
+.dashboard {
+  /* background-color: #D9D9D9; */
+  height: 100vh;
+}
+
+.header {
+  /* border: solid black 1px; */
+  background: #213187;
+  height: 7vh;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.appHeader {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerM {
+  /* border: solid black 1px; */
+  background: #213187;
+  height: 8vh;
+  color: white;
+  width: 100%;
+  padding: 5px 0 10px;
+  cursor: pointer;
+  user-select: none;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.taskTitle {
+  width: 70%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.MainBody {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center; */
+  width: 100%;
+  background: #213187;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.MainBodyM {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center; */
+  width: 100%;
+  background: #213187;
+  color: white;
 }
+
+.TaskList {
+  /* border: solid black 1px; */
+  background: #213187;
+  width: 29%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  padding-top: 10px;
+  height: 92vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.TaskListM {
+  /* border: solid black 1px; */
+  width: 100%;
+  background: #213187;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  padding-top: 10px;
+  height: 92vh;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.CreateTaskButton {
+  min-width: 60%;
+  min-height: 50px;
+  border-radius: 15px;
+  font-size: larger;
+  border: none;
+}
+
+.TaskWindow {
+  margin-top: 20px;
+  background: white;
+  width: 70%;
+  float: right;
+  color: black;
+}
+
+.TaskWindowM {
+
+  background: white;
+  min-width: 150px;
+  width: 100%;
+  color: black;
+
+  overflow: hidden;
+  font-size: medium;
+}
+
+
+.MobileTaskWindowHeader {
+  background: #213187;
+  min-height: 10vh;
+
+  color: white;
+  padding: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+  cursor: pointer;
+  user-select: none;
+
+}
+
+.MobileTaskWindowHeader>input {
+  background: #213187;
+  color: white;
+  border: none;
+  width: 90%;
+}
+
+.MobileTaskWindowHeader>input:focus {
+  background: #213187;
+  color: white;
+  border: 1px solid #213187;
+  width: 90%;
+}
+
+.inputName {
+  font-size: xx-large;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.inputDescription {
+  font-size: larger;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.inputStatus {
+  font-size: larger;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+label {
+  font-size: larger;
+}
+
+
+.nameLabel {
+  font-size: xx-large;
+}
+
+.TaskItem {
+  width: 80%;
+  min-height: 60px;
+  background: gray;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  /* font-size: x-large; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  user-select: none;
+}
+
+.DeleteButton {
+  background: white;
+  border: none;
+  border-radius: 25%;
+  color: #FF4747;
+}
+
+.ArchiveButton {
+  background: white;
+  border: none;
+  border-radius: 25%;
+  color: Blue;
+  margin-left: 10px;
+}
+
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

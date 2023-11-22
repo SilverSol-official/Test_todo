@@ -17,6 +17,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<DashBoard />} />
           <Route path='/tasks/' element={<Dashboard />}>
             <Route path='/tasks/:id' element={<TaskWindow />} />
           </Route>

@@ -20,7 +20,7 @@ const TaskItem = ({ props }) => {
         {statusSelector(props.status)}
       </div>
       <div>
-        <h1>{props.title}</h1>
+        <p className="taskLabel">{props.title}</p>
       </div>
       <div>
         <button className="DeleteButton" onClick={() => { dispatch(deleteTask({ id: props.id, archived: props.archived })) }}>

@@ -147,6 +147,10 @@
   width: 90%;
 }
 
+.TaskWindowM>form {
+  margin-left: 12px;
+}
+
 .inputName {
   font-size: xx-large;
   border: none;
@@ -191,6 +195,15 @@ label {
   justify-content: space-around;
   cursor: pointer;
   user-select: none;
+}
+
+.taskLabel {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  min-width: 100px;
+  font-size: large;
 }
 
 .DeleteButton {

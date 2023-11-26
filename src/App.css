@@ -95,6 +95,7 @@
   border-radius: 15px;
   font-size: larger;
   border: none;
+  margin: 10px;
 }
 
 .TaskWindow {
@@ -205,6 +206,7 @@ label {
   min-width: 100px;
   font-size: large;
 }
+
 
 .DeleteButton {
   background: white;

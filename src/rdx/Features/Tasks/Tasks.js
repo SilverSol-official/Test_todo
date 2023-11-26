@@ -6,6 +6,7 @@ import {
 } from 'uuid';
 
 const initialState = {
+  userName: "",
   currentId: "1",
   tasks: [
     //   {
@@ -60,6 +61,10 @@ export const taskSlice = createSlice({
       });
       state.currentId = tempId;
       localStorage.tasks = JSON.stringify(state.tasks);
+    },
+    setName: (state, action) => {
+      console.log(action.payload.name);
+      state.userName = action.payload.name;
     },
     setTitle: (state, action) => {
       console.log(action.payload);
@@ -146,6 +151,7 @@ export const taskSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
+  setName,
   createTask,
   setTitle,
   setDescription,

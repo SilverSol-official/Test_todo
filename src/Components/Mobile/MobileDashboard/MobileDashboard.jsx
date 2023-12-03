@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../Header/Header";
 import { useEffect } from "react";
 import { initiateData } from "../../../rdx/Features/Tasks/Tasks";
@@ -13,6 +13,7 @@ const MobileDashBoard = () => {
 
     const width = window.screen.width;
     const navigate = useNavigate();
+    const status = useSelector((state) => state.apiTasks.taskStatus);
     useEffect(() => {
         if (width > 770) {
             navigate('/tasks/');
@@ -20,8 +21,10 @@ const MobileDashBoard = () => {
     }, [width, navigate])
 
     useEffect(() => {
-        dispatch(fetchAllTasks());
-    }, [dispatch])
+        if (status == 'loading') {
+            dispatch(fetchAllTasks());
+        }
+    }, [dispatch, status])
 
     return (
         <div className="dashboard">

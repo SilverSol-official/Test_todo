@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CreateTaskButton from "../CreateTask/CreateTask";
 import TaskItem from "../TaskItem/TaskItem";
-import testList from "../../testData";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SortDropDown from "../SordDropDown/SortDropDown";
-import Switch from '@mui/material/Switch';
-import { Box, Button, Typography } from "@mui/material";
-import { fetchAllTasks } from "../../rdx/Features/APITasks/APITasks";
+
 
 
 

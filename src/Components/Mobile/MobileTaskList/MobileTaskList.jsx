@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import CreateTaskButton from "../../CreateTask/CreateTask";
 import { useSelector } from "react-redux";
 import SortDropDown from "../../SordDropDown/SortDropDown";
-import Switch from '@mui/material/Switch';
-import { Box, Typography } from "@mui/material";
 import MobileTaskItem from "../MobileTaskItem/MobiletaskItem";
 
 
 const MobileTaskList = () => {
 
   const tasks = useSelector((state) => state.apiTasks.taskData);
+  const status = useSelector((state) => state.apiTasks.taskStatus);
   const [sort, setSort] = useState('All');
   const [page, setPage] = useState(1);
   const tasksPerPage = 4;
@@ -17,13 +16,16 @@ const MobileTaskList = () => {
 
 
   const render = () => {
-
-    if (tasks.length === 0) {
-      return (<h3>No tasks</h3>)
+    if (status === 'loading') {
+      return (<h2>Loading ...</h2>)
     } else {
-      return (tasks.map((item, index) => {
-        if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
-      }))
+      if (tasks.length === 0) {
+        return (<h3>No tasks</h3>)
+      } else {
+        return (tasks.map((item, index) => {
+          if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
+        }))
+      }
     }
   }
 

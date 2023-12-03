@@ -21,11 +21,12 @@ const TaskList = () => {
     if (status === 'loading') {
       return (<h2>Loading ...</h2>)
     } else {
+      console.log(sort)
       if (tasks.length === 0) {
         return (<h3>No tasks</h3>)
       } else {
         return (tasks.map((item, index) => {
-          if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <TaskItem key={item.id} props={item} /> }
+          if ((sort == 'All' || item.completed + '' == sort + '') && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <TaskItem key={item.id} props={item} /> }
         }))
       }
     }

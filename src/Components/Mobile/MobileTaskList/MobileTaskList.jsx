@@ -23,7 +23,7 @@ const MobileTaskList = () => {
         return (<h3>No tasks</h3>)
       } else {
         return (tasks.map((item, index) => {
-          if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
+          if ((item.completed + '' == sort + '') && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
         }))
       }
     }

@@ -39,10 +39,8 @@ const SortDropDown = ({ changeSortMethod }) => {
                     onChange={e => SelectHandler(e)}
                 >
                     <option value={'All'}>All</option>
-                    <option value={'Done'}>Done</option>
-                    <option value={'In process'}>In process</option>
-                    <option value={'Break'}>Break</option>
-                    <option value={'Not started'}>Not started</option>
+                    <option value={true}>Done</option>
+                    <option value={false}>Not started</option>
                 </NativeSelect>
             </FormControl>
         </Box>

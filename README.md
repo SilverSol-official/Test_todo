@@ -1,3 +1,4 @@
+Dev comments in bottom
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Dev comments
+ ### List of dependencies:
+ @emotion/react@11.11.1
+├── @emotion/styled@11.11.0
+├── @mui/icons-material@5.14.0
+├── @mui/material@5.14.0
+├── @reduxjs/toolkit@1.9.5
+├── @testing-library/jest-dom@5.16.5
+├── @testing-library/react@13.4.0
+├── @testing-library/user-event@13.5.0
+├── firebase@10.6.0
+├── localforage@1.10.0
+├── match-sorter@6.3.1
+├── react-dom@18.2.0
+├── react-redux@8.1.1
+├── react-router-dom@6.14.1
+├── react-scripts@5.0.1
+├── react@18.2.0
+├── sort-by@1.2.0
+├── uuid@9.0.0
+└── web-vitals@2.1.4
+
+To install all of them use next command: npm install @emotion/react@11.11.1 @emotion/styled@11.11.0 @mui/icons-material@5.14.0 @mui/material@5.14.0 @reduxjs/toolkit@1.9.5 @testing-library/jest-dom@5.16.5 @testing-library/react@13.4.0 @testing-library/user-event@13.5.0 firebase@10.6.0 localforage@1.10.0 match-sorter@6.3.1 react-dom@18.2.0 react-redux@8.1.1 react-router-dom@6.14.1 react-scripts@5.0.1 react@18.2.0 sort-by@1.2.0 uuid@9.0.0 web-vitals@2.1.4
+
+### How to run
+ - Install dependencies
+ - use next command: npm run
+
+### Link to vercel deployed project: https://test-todo-jet.vercel.app/
+### Link to github: 
+
+### How it works?
+
+When the program starts, it takes user's device screen width and redirect acording to it in apropriate version. Then it calls async thunk fetchAllTasks() to get tasks from api. Extra reducers from (apiTasks) handle fetch method, in case any error occurs it takes data from localStorage, and notify user. In task list conponent you can see all tasks and pages we have, there we can delete task or we can sort them by their status. Every task component formaly is a button which redirects user by url which has id param in it which uses in TaskWindow component to represent informaion about task. 
+
+### Stack of technologies:
+
+ - HTML
+ - CSS
+ - JS 
+ - React
+ - Redux-toolkit
+ - MUI
+ - Redux-router
+ - RestApi

@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const Header = () => {
-  const tasks = useSelector((state) => state.tasks);
-  const archive = useSelector((state) => state.tasks);
+
+  const tasks = useSelector((state) => state.apiTasks.taskData);
+  // takes task`s id from url param
+  let { id } = useParams();
   let task;
-  if (tasks.tasks.find(item => item.id === tasks.currentId)) {
-    task = tasks.tasks.find(item => item.id === tasks.currentId);
-  } else {
-    task = tasks.archive.find(item => item.id === tasks.currentId);
-  }
-  const checkTitle = () => {
-    if (task === undefined) {
-      return ('')
-    } else {
-      console.log(task.title)
-      return (task.title)
-    }
+
+  //gets task name by id to show it in header
+  if (tasks.find(item => item.id == id)) {
+    task = tasks.find(item => item.id == id);
   }
 
 

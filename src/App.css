@@ -136,24 +136,24 @@
 .pageButtonContainer {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  scroll-behavior: auto;
   justify-content: center;
-  width: 80%;
+  width: 90%;
   margin: 10px auto;
   scroll-margin-inline: 1220px;
   padding: 10px;
 }
 
 .pageButton {
-  display: inline;
+  /* display: flex; */
+  /* 
+  text-align: center; */
   margin: 0 5px;
   background-color: white;
   border: none;
   border-radius: 5px;
-  font-size: large;
-  min-width: 20px;
-  min-height: 20px;
+  font-size: medium;
+  min-width: 25px;
+  min-height: 25px;
   cursor: pointer;
   user-select: none;
 }
@@ -185,6 +185,8 @@
   border: none;
   border-radius: 10px;
   padding: 10px;
+  display: block;
+  width: 80%;
 }
 
 .inputDescription {

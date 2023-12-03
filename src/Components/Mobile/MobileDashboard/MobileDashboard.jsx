@@ -5,6 +5,7 @@ import { initiateData } from "../../../rdx/Features/Tasks/Tasks";
 import MobileTaskList from "../MobileTaskList/MobileTaskList";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import { useNavigate } from "react-router-dom";
+import { fetchAllTasks } from "../../../rdx/Features/APITasks/APITasks";
 
 const MobileDashBoard = () => {
 
@@ -19,7 +20,7 @@ const MobileDashBoard = () => {
     }, [width, navigate])
 
     useEffect(() => {
-        dispatch(initiateData());
+        dispatch(fetchAllTasks());
     }, [dispatch])
 
     return (

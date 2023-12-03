@@ -16,10 +16,10 @@ const DropDownStyles = {
 }
 
 
-
+// used for sort dropdown component
 const SortDropDown = ({ changeSortMethod }) => {
     const [selectedMethod, setSelectedMethod] = useState('All');
-
+    // hendle user`s select
     const SelectHandler = (e) => {
         setSelectedMethod(e.target.value);
         changeSortMethod(e.target.value);

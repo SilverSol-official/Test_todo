@@ -17,17 +17,14 @@ const MobileTaskItem = ({ props }) => {
     return (
         <div className="TaskItem" onClick={() => { buttonHandle() }}>
             <div>
-                {statusSelector(props.status)}
+                {statusSelector(props.completed)}
             </div>
             <div>
                 <p className="taskLabel">{props.title}</p>
             </div>
             <div>
-                <button className="DeleteButton" onClick={() => { dispatch(deleteTask({ id: props.id, archived: props.archived })) }}>
+                <button className="DeleteButton" onClick={() => { dispatch(deleteTask({ id: props.id })) }}>
                     <DeleteIcon />
-                </button>
-                <button className="ArchiveButton" onClick={() => { dispatch(setArchived({ id: props.id, archived: props.archived })) }}>
-                    <ArchiveIcon />
                 </button>
             </div>
         </div>

@@ -9,35 +9,24 @@ import MobileTaskItem from "../MobileTaskItem/MobiletaskItem";
 
 const MobileTaskList = () => {
 
-  const tasks = useSelector((state) => state.tasks.tasks);
-  const archive = useSelector((state) => state.tasks.archive);
+  const tasks = useSelector((state) => state.apiTasks.taskData);
   const [sort, setSort] = useState('All');
-  const [archived, setArchived] = useState(false);
   const [page, setPage] = useState(1);
   const tasksPerPage = 4;
 
 
 
   const render = () => {
-    if (archived) {
-      if (archive.length === 0) {
-        return (<h3>Archive is empty</h3>)
-      } else {
-        return (archive.map((item) => {
-          if (sort == 'All' || item.status == sort) { return <MobileTaskItem key={item.id} props={item} /> }
-        }))
-      }
-    } else {
-      if (tasks.length === 0) {
-        return (<h3>No tasks</h3>)
-      } else {
-        return (tasks.map((item, index) => {
-          if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
-        }))
-      }
-    }
 
+    if (tasks.length === 0) {
+      return (<h3>No tasks</h3>)
+    } else {
+      return (tasks.map((item, index) => {
+        if ((sort == 'All' || item.status == sort) && ((index < page * tasksPerPage) && (index + 1 > (page - 1) * tasksPerPage))) { return <MobileTaskItem key={item.id} props={item} /> }
+      }))
+    }
   }
+
 
 
   const ButtonGenerate = () => {
@@ -61,20 +50,22 @@ const MobileTaskList = () => {
     }
 
 
+
+
     for (let i = firstPage(); i < (lastPage()); i++) {
-      res.push(<button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>{i + 1}</button>)
+      res.push(
+        <button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>
+          {i + 1}
+        </button>)
     }
-    res.unshift(<button className='pageButton ' onClick={() => { page === 1 ? setPage(1) : setPage(page - 1) }}> &lt; </button>)
-    res.push(<button className='pageButton ' onClick={() => { page === numberOfPages ? setPage(page) : setPage(page + 1) }}> &gt; </button>)
-
-
-    if (numberOfPages > 5) {
-
-    } else {
-      for (let i = 0; i < numberOfPages; i++) {
-        res.push(<button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>{i + 1}</button>)
-      }
-    }
+    res.unshift(
+      <button className='pageButton ' key={'pr'} onClick={() => { page === 1 ? setPage(1) : setPage(page - 1) }}>
+        &lt;
+      </button>)
+    res.push(
+      <button className='pageButton ' key={'fv'} onClick={() => { page === numberOfPages ? setPage(page) : setPage(page + 1) }}>
+        &gt;
+      </button>)
 
     return (res);
   }
@@ -83,12 +74,13 @@ const MobileTaskList = () => {
     <div className="TaskListM">
       {/* <>User: {user}</> */}
       <CreateTaskButton />
-      <Typography variant="h6" sx={{ margin: '10px auto' }}>Main list <Switch color="default" checked={archived} onChange={(e) => setArchived(e.target.checked)} /> Archive</Typography>
       <SortDropDown changeSortMethod={setSort} />
-      {render()}
+      Number of pages: {Math.ceil(tasks.length / tasksPerPage)}
       <div className="pageButtonContainer">
         {ButtonGenerate()}
       </div>
+      {render()}
+
     </div>
   );
 };

@@ -1,39 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateTaskButton from "../CreateTask/CreateTask";
 import TaskItem from "../TaskItem/TaskItem";
 import testList from "../../testData";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SortDropDown from "../SordDropDown/SortDropDown";
 import Switch from '@mui/material/Switch';
 import { Box, Button, Typography } from "@mui/material";
+import { fetchAllTasks } from "../../rdx/Features/APITasks/APITasks";
 
 
 
 const TaskList = () => {
 
-  const tasks = useSelector((state) => state.tasks.tasks);
-  const archive = useSelector((state) => state.tasks.archive);
-  // const user = useSelector((state) => state.tasks.userName);
+  const tasks = useSelector((state) => state.apiTasks.taskData);
+  const status = useSelector((state) => state.apiTasks.taskStatus);
   const [sort, setSort] = useState('All');
-  const [archived, setArchived] = useState(false);
   const [page, setPage] = useState(1);
-  const tasksPerPage = 5;
+  const tasksPerPage = 5; // put here number of tasks on one page 
 
-
-
-
-
-
-
+  // render function shows list of tasks acording to selcted page
   const render = () => {
-    if (archived) {
-      if (archive.length === 0) {
-        return (<h3>Archive is empty</h3>)
-      } else {
-        return (archive.map((item) => {
-          if (sort == 'All' || item.status == sort) { return <TaskItem key={item.id} props={item} /> }
-        }))
-      }
+    //check of status to write if loading
+    if (status === 'loading') {
+      return (<h2>Loading ...</h2>)
     } else {
       if (tasks.length === 0) {
         return (<h3>No tasks</h3>)
@@ -44,12 +33,15 @@ const TaskList = () => {
       }
     }
 
+
   }
 
+
+  // generates and calculate number of pages and buttons for them
   const ButtonGenerate = () => {
     let res = [];
     let numberOfPages = Math.ceil(tasks.length / tasksPerPage);
-
+    // returns the number of firts page in stack on screen (1,6,11..) used to not to show 0 
     const lastPage = () => {
       if (((Math.floor((page) / 5) * 5) + 5) >= numberOfPages) {
         return numberOfPages;
@@ -57,7 +49,7 @@ const TaskList = () => {
         return (Math.floor((page) / 5) * 5) + 5;
       }
     }
-
+    //returns  the number of firts page in stack on screen to have on screen only actual amount of pages
     const firstPage = () => {
       if (((Math.floor((page) / 5) * 5) - 1) === -1) {
         return (0);
@@ -66,21 +58,21 @@ const TaskList = () => {
       }
     }
 
-
+    //gernerationg of buttons
     for (let i = firstPage(); i < (lastPage()); i++) {
-      res.push(<button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>{i + 1}</button>)
+      res.push(
+        <button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>
+          {i + 1}
+        </button>)
     }
-    res.unshift(<button className='pageButton ' onClick={() => { page === 1 ? setPage(1) : setPage(page - 1) }}> &lt; </button>)
-    res.push(<button className='pageButton ' onClick={() => { page === numberOfPages ? setPage(page) : setPage(page + 1) }}> &gt; </button>)
-
-
-    if (numberOfPages > 5) {
-
-    } else {
-      for (let i = 0; i < numberOfPages; i++) {
-        res.push(<button className={(page === i + 1) ? 'pageButton selectedPage' : 'pageButton'} key={i} onClick={() => { setPage(i + 1) }}>{i + 1}</button>)
-      }
-    }
+    res.unshift(
+      <button className='pageButton ' key={'pr'} onClick={() => { page === 1 ? setPage(1) : setPage(page - 1) }}>
+        &lt;
+      </button>)
+    res.push(
+      <button className='pageButton ' key={'fv'} onClick={() => { page === numberOfPages ? setPage(page) : setPage(page + 1) }}>
+        &gt;
+      </button>)
 
     return (res);
   }
@@ -89,23 +81,15 @@ const TaskList = () => {
     <div className="container">
 
       <div className="TaskList">
-        {/* <>User: {user}</> */}
         <CreateTaskButton />
-        <Typography variant="h6" sx={{ margin: '10px auto' }}>Main list <Switch color="default" checked={archived} onChange={(e) => setArchived(e.target.checked)} /> Archive</Typography>
         <SortDropDown changeSortMethod={setSort} />
-
-
-        tasks:{tasks.length}
-        page:{page};
-        {render()}
+        Number of pages: {Math.ceil(tasks.length / tasksPerPage)}
         <div className="pageButtonContainer">
           {ButtonGenerate()}
         </div>
-
+        {render()}
       </div>
-
     </div>
-
   );
 };
 

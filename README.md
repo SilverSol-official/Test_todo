@@ -99,7 +99,7 @@ To install all of them use next command: npm install @emotion/react@11.11.1 @emo
  - use next command: npm run
 
 ### Link to vercel deployed project: https://test-todo-jet.vercel.app/
-### Link to github: 
+### Link to github: https://github.com/SilverSol-official/Test_todo
 
 ### How it works?
 

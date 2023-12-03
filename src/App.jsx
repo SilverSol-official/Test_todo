@@ -6,7 +6,7 @@ import TaskWindow from "./Components/TaskWindow/TaskWindow";
 import MobileDashBoard from "./Components/Mobile/MobileDashboard/MobileDashboard";
 import Dashboard from '../src/Components/DashBoard/Dashboard';
 import MobileTaskWindow from "./Components/Mobile/MobileTaskWindow/MobileTaskWindow";
-import AuthProvider from "./Components/Auth/Auth";
+
 
 
 
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AuthProvider />} />
+          <Route path="/" element={<DashBoard />} />
           <Route path='/tasks/' element={<Dashboard />}>
             <Route path='/tasks/:id' element={<TaskWindow />} />
           </Route>

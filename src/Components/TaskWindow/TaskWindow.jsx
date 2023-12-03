@@ -12,9 +12,9 @@ const TaskWindow = () => {
   const navigate = useNavigate();
 
 
-  const [taskName, setName] = useState();
+  const [taskName, setName] = useState('');
   const [taskStatus, setStatusF] = useState();
-  const [taskDescription, setDescriptionF] = useState();
+  const [taskDescription, setDescriptionF] = useState('');
   const [taskStartDate, setStartDateF] = useState();
   const [taskEndDate, setEndDateF] = useState();
   const [archived, setArchived] = useState();

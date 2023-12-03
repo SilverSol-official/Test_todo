@@ -70,8 +70,7 @@
   justify-content: top;
   padding-top: 10px;
   height: 92vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+
 }
 
 .TaskListM {
@@ -85,8 +84,8 @@
   justify-content: top;
   padding-top: 10px;
   height: 92vh;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
+  /* overflow-x: scroll;
+  scroll-behavior: smooth; */
 }
 
 .CreateTaskButton {
@@ -132,6 +131,35 @@
   cursor: pointer;
   user-select: none;
 
+}
+
+.pageButtonContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+  scroll-margin-inline: 1220px;
+  padding: 10px;
+}
+
+.pageButton {
+  display: inline;
+  margin: 0 5px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: large;
+  min-width: 20px;
+  min-height: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selectedPage {
+  background-color: yellow;
 }
 
 .MobileTaskWindowHeader>input {

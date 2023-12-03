@@ -4,9 +4,17 @@ import {
 import {
   v4 as uuidv4
 } from 'uuid';
-
+import {
+  getDatabase,
+  ref,
+  child,
+  get
+} from "firebase/database";
+import {
+  useEffect
+} from "react";
 const initialState = {
-  userName: "",
+
   currentId: "1",
   tasks: [
     //   {
@@ -50,7 +58,7 @@ export const taskSlice = createSlice({
   reducers: {
     createTask: (state) => {
       const tempId = uuidv4();
-      state.tasks.unshift({
+      state.tasks.push({
         title: '',
         id: tempId,
         description: '',
@@ -63,8 +71,7 @@ export const taskSlice = createSlice({
       localStorage.tasks = JSON.stringify(state.tasks);
     },
     setName: (state, action) => {
-      console.log(action.payload.name);
-      state.userName = action.payload.name;
+      state.userName = action.payload.name.slice(0, -10);
     },
     setTitle: (state, action) => {
       console.log(action.payload);
@@ -89,7 +96,7 @@ export const taskSlice = createSlice({
     },
     setCurrentId: (state, action) => {
       state.currentId = action.payload.id;
-      console.log(state);
+
       // localStorage.tasks = JSON.stringify(state.tasks);
     },
     setArchived: (state, action) => {
@@ -131,6 +138,8 @@ export const taskSlice = createSlice({
 
     },
     initiateData: (state) => {
+
+
       if (localStorage.tasks === undefined && localStorage.archive === undefined) {
         localStorage.setItem('archive', '[]');
         localStorage.setItem('tasks', '[]');
@@ -141,10 +150,16 @@ export const taskSlice = createSlice({
       }
       state.tasks = JSON.parse(localStorage.tasks);
       state.archive = JSON.parse(localStorage.archive);
+
+
+
+
+
       // } else {
       //   console.log(JSON.parse(localStorage.tasks));
 
       // }
+
     }
   },
 })
